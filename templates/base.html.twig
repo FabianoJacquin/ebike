@@ -45,7 +45,7 @@
 
             <div class="col-3">
               <div class="site-logo">
-                <a href="index.html"><strong>CarRental</strong></a>
+                <a href="index.html"><strong>Ebike Flassin</strong></a>
               </div>
             </div>
 
@@ -57,6 +57,7 @@
             <ul class="site-menu main-menu js-clone-nav ml-auto ">
                 <li class="active"><a href="{{ path('home') }}" class="nav-link">Home</a></li>
                 <li><a href="{{ path('register') }}" class="nav-link">Registrazione</a></li>
+                <li><a href="{{ path('app_login') }}" class="nav-link">Login</a></li>
             </ul>
         </nav>
         </div>
@@ -70,8 +71,13 @@
         {% block hero %}
         {% endblock %}
 
-        {% block content %}
-        {% endblock %}
+        <div class="site-section">
+            <div class="container">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+
 
         <!--
         <div class="site-section">
