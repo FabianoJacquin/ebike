@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h4 class="section-heading"><strong>Il mio Account</strong></h4>
+    Ciao {{ app.user.firstname }}, benvenuto nella tua pagina privata.
+    <hr>
+    <a href="{{ path('account_password') }}">Modificare la password</a>
+    <br>
+{% endblock %}
