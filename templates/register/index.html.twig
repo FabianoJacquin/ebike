@@ -1,9 +1,28 @@
 {% extends 'base.html.twig' %}
 
+{% block innerPage %}
+
+        <div class="hero inner-page" style="background-image: url('{{ asset('assets/images/hero_1_a.jpg') }}');">
+
+                <div class="container">
+                        <div class="row align-items-end ">
+                                <div class="col-lg-5">
+
+                                        <div class="intro">
+                                                <h1><strong>Registrazione</strong></h1>
+                                                <div class="custom-breadcrumbs"><a href="{{ path('home') }}">Home</a> <span class="mx-2">/</span> <strong>Ebike</strong></div>
+                                        </div>
+
+                                </div>
+                        </div>
+                </div>
+        </div>
+
+{% endblock %}
+
 {% block content %}
 
         <div>
-                <h3 class="section-heading mt-5"><strong>Registrazione</strong></h3>
                 {{ form(form) }}
         </div>
 
