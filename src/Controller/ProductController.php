@@ -11,10 +11,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProductController extends AbstractController
 {
 
-    private $entityManager;
+    private EntityManagerInterface $entityManager;
 
     /**
-     * @param $entityManager
+     * @param EntityManagerInterface $entityManager
      */
     public function __construct(EntityManagerInterface $entityManager)
     {
@@ -22,13 +22,27 @@ class ProductController extends AbstractController
     }
 
 
-    #[Route('/product', name: 'product')]
+    #[Route('/products', name: 'products')]
     public function index(): Response
     {
         $products = $this->entityManager->getRepository(Product::class)->findAll();
 
         return $this->render('product/index.html.twig', [
             'products' => $products
+        ]);
+    }
+
+    #[Route('/product/{slug}', name: 'product')]
+    public function show($slug): Response
+    {
+        $product = $this->entityManager->getRepository(Product::class)->findOneBySlug($slug);
+
+        if(!$product){
+            return $this->redirectToRoute('products');
+        }
+
+        return $this->render('product/show.html.twig', [
+            'product' => $product
         ]);
     }
 }

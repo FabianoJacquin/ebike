@@ -19,6 +19,33 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
+    public function findWithSearch($parameters){
+
+        $tipo = $parameters['tipo'];
+        $taglia = $parameters['taglia'];
+
+        $qb = $this
+                ->createQueryBuilder('p')
+                ->select('c', 'p', 's')
+                ->join('p.category', 'c')
+                ->join('p.size', 's');
+
+        if($tipo != 'Tipo') {
+            $qb = $qb
+                    ->andWhere('s.name = (:tipo)')
+                    ->setParameter('tipo', $tipo);
+        }
+
+        if($taglia != 'Taglia') {
+            $qb = $qb
+                ->andWhere('c.name = (:taglia)')
+                ->setParameter('taglia', $taglia);
+        }
+
+        return $qb->getQuery()->getResult();
+
+    }
+
     // /**
     //  * @return Product[] Returns an array of Product objects
     //  */

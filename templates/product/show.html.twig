@@ -10,7 +10,7 @@
 
                     <div class="intro">
                         <h1><strong>Catalogo Ebike</strong></h1>
-                        <div class="custom-breadcrumbs"><a href="{{ path('home') }}">Home</a> <span class="mx-2">/</span> <strong>Ebike</strong></div>
+                        <div class="custom-breadcrumbs"><a href="{{ path('home') }}">Home</a> <span class="mx-2">/</span> <a href="{{ path('products') }}">Ebike</a> <span class="mx-2">/</span> <strong>{{ product.name }}</strong></div>
                     </div>
 
                 </div>
@@ -23,9 +23,7 @@
 {% block content %}
 
     <div class="row">
-        {% for product in products %}
         <div class="col-md-6 col-lg-4 mb-4">
-
             <div class="listing d-block  align-items-stretch text-center">
                 <div class="listing-img h-100 mr-4">
                     <img src="/uploads/{{ product.illustration }}" alt="Image" class="img-fluid">
@@ -34,13 +32,14 @@
                     <h3>{{ product.name }}</h3>
                     <div>
                         <p>{{ product.subtitle }}</p>
-                        <p><a href="{{ path('product', {'slug': product.slug}) }}" class="btn btn-primary btn-sm">Noleggia ora</a></p>
+                        <p>{{ product.description }}</p>
                     </div>
                 </div>
-
             </div>
         </div>
-        {% endfor %}
+        <div class="col-md-6 col-lg-4 mb-4">
+
+        </div>
     </div>
 
 {% endblock %}

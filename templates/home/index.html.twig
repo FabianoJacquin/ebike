@@ -13,25 +13,24 @@
                         </div>
                     </div>
 
-                    <form class="trip-form">
+                    <form class="trip-form" method="post" action="{{ path('search') }}">
 
                         <div class="row align-items-center">
 
                             <div class="mb-2 mb-md-0 col-md-2">
-                                <select name="" id="" class="custom-select form-control">
-                                    <option value="">Seleziona Tipo</option>
-                                    <option value="">MTB Full</option>
-                                    <option value="">MTB Front</option>
+                                <select name="tipo" id="" class="custom-select form-control">
+                                    <option value="Tipo">Tipo</option>
+                                    {% for category in categories %}
+                                        <option value="{{ category.name }}">{{ category.name }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                             <div class="mb-2 mb-md-0 col-md-2">
-                                <select name="" id="" class="custom-select form-control">
-                                    <option value="">Seleziona Taglia</option>
-                                    <option value="">24 pollici</option>
-                                    <option value="">Small</option>
-                                    <option value="">Medium</option>
-                                    <option value="">Large</option>
-                                    <option value="">Extra Large</option>
+                                <select name="taglia" id="" class="custom-select form-control">
+                                    <option value="Taglia">Taglia</option>
+                                    {% for size in sizes %}
+                                    <option value="{{ size.name }}">{{ size.name }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                             <div class="mb-3 mb-md-0 col-md-3">
@@ -43,7 +42,7 @@
                             </div>
                             <div class="mb-3 mb-md-0 col-md-3">
                                 <div class="form-control-wrap">
-                                    <input type="text" id="cf-4" placeholder="Data Restituzione" class="form-control datepicker px-3">
+                                    <input type="text" id="cf-4" placeholder="Data Fine" class="form-control datepicker px-3">
                                     <span class="icon icon-date_range"></span>
                                 </div>
                             </div>
