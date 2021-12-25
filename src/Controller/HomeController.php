@@ -41,7 +41,6 @@ class HomeController extends AbstractController
         $parameters = $request->request->all();
 
         $products = $this->entityManager->getRepository(Product::class)->findWithSearch($parameters);
-        dd($products);
 
         return $this->render('product/index.html.twig', [
             'products' => $products

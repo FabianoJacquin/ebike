@@ -32,13 +32,13 @@ class ProductRepository extends ServiceEntityRepository
 
         if($tipo != 'Tipo') {
             $qb = $qb
-                    ->andWhere('s.name = (:tipo)')
+                    ->andWhere('c.name = (:tipo)')
                     ->setParameter('tipo', $tipo);
         }
 
         if($taglia != 'Taglia') {
             $qb = $qb
-                ->andWhere('c.name = (:taglia)')
+                ->andWhere('s.name = (:taglia)')
                 ->setParameter('taglia', $taglia);
         }
 

@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block innerPage %}
+
+    <div class="hero inner-page" style="background-image: url('{{ asset('assets/images/hero_1_a.jpg') }}');">
+
+        <div class="container">
+            <div class="row align-items-end ">
+                <div class="col-lg-5">
+
+                    <div class="intro">
+                        <h1><strong>Il mio carrello</strong></h1>
+                        <div class="custom-breadcrumbs"><a href="{{ path('home') }}">Home</a> <span class="mx-2">/</span> <strong>Il mio carrello</strong></div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+
+            <div class="col-md-12 col-lg-12 mb-4">
+                <div class="listing d-block  align-items-stretch text-center">
+                    {% if cart|length >0 %}
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Ebike</th>
+                                <th scope="col"></th>
+                                <th scope="col">Quantità</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for product in cart %}
+                        <tr>
+                            <th>
+                                <img src="/uploads/{{ product.product.illustration }}" alt="{{ product.product.name }}" class="img-fluid">
+                            </th>
+                            <td>
+                                {{ product.product.name }}<br/>
+                                {{ product.product.description }}
+                            </td>
+                            <td>
+                                <a href="{{ path('decrease_from_cart', {'id' : product.product.id}) }}">
+                                    <img src="{{ asset('assets/images/less.png') }}" alt="Togliere Ebike" height="15px">
+                                </a>
+                                {{ product.quantity }}
+                                <a href="{{ path('add_to_cart', {'id' : product.product.id}) }}">
+                                    <img src="{{ asset('assets/images/more.png') }}" alt="Aggiungere Ebike" height="15px">
+                                </a>
+
+                            </td>
+                            <td>
+                                <a href="{{ path('delete_from_cart', {'id' : product.product.id} )}}">
+                                    <img src="{{ asset('assets/images/bin.png') }}" alt="Cancella noleggio">
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="text-right">
+                        <b>Quantità ebike noleggiate:</b> {{ cart|length }}<br/>
+                        <a href="" class="btn btn-success btn-block">Confermare noleggio</a>
+                    </div>
+                    {% else %}
+                        <hr>
+                        <p><b>Il carrello è vuoto</b></p>
+                    {% endif %}
+                </div>
+            </div>
+        <!--
+            <div class="col-md-2 col-lg-2 mb-4">
+                <p><a href="{{ path('remove_my_cart')}}" class="btn btn-primary btn-sm">Svuota carrello</a></p>
+            </div>
+            -->
+    </div>
+
+{% endblock %}

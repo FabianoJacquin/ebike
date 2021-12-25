@@ -57,6 +57,11 @@
             <ul class="site-menu main-menu js-clone-nav ml-auto ">
                 <li class="active"><a href="{{ path('home') }}" class="nav-link">Home</a></li>
                 <li class="active"><a href="{{ path('products') }}" class="nav-link">Ebike</a></li>
+                <li class="active">
+                    <a href="{{ path('cart') }}" class="nav-link">
+                        <img src="{{ asset('assets/images/shopping-cart.png') }}" alt="Il mio carrello" height="20px">
+                    </a>
+                </li>
 
                 {% if app.user %}
                     <li><a href="{{ path('account') }}" class="nav-link">Account</a></li>
